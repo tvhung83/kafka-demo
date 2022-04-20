@@ -1,0 +1,30 @@
+@namespace("com.example.kafka.avro.generated")
+protocol Events {
+  record Order {
+    string email;
+    union {null, ShippingAddress} shippingAddress = null;
+    array<LineItem> lineItems = [];
+    union {null, string} orderNumber = null;
+  }
+
+  record LineItem {
+    union {null, string} sku = null;
+    union {null, string} productType = null;
+    union {null, long} salePrice = null;
+    union {null, string} warehouse = null;
+    union {null, int} quantity = null;
+    string vendor = "";
+  }
+
+  record ShippingAddress {
+    union {null, string} firstName = null;
+    union {null, string} lastName = null;
+    union {null, string} address1 = null;
+    union {null, string} address2 = null;
+    union {null, string} city = null;
+    union {null, string} state = null;
+    union {null, string} zipCode = null;
+    union {null, string} countryCode = null;
+    union {null, string} phone = null;
+  }
+}
