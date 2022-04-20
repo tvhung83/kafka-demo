@@ -3,6 +3,8 @@
  */
 package com.example.kafka;
 
+import com.example.kafka.guice.HandlerModule;
+import com.example.kafka.guice.KafkaModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Key;
@@ -11,9 +13,9 @@ import io.undertow.Handlers;
 import io.undertow.Undertow;
 import io.undertow.server.HttpHandler;
 
-public class App {
+public class ProducerApp {
     public static void main(String[] args) {
-        Injector injector = Guice.createInjector(new KafkaModule());
+        Injector injector = Guice.createInjector(new KafkaModule(), new HandlerModule());
         HttpHandler receiver = injector.getInstance(Key.get(HttpHandler.class, Names.named("receiver")));
         HttpHandler root = Handlers.routing().post("/", receiver);
         Undertow.builder()

@@ -7,6 +7,8 @@
 
     <logger name="org.apache.kafka.clients.NetworkClient" level="info" />
     <logger name="org.xnio.nio" level="info" />
+    <logger name="org.apache.kafka.clients" level="info" />
+    <logger name="io.confluent.kafka.schemaregistry.client.rest.RestService" level="info" />
 
     <root level="debug">
         <appender-ref ref="STDOUT" />
