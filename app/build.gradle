@@ -8,6 +8,7 @@ repositories {
         url "https://packages.confluent.io/maven"
     }
 }
+
 dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
@@ -27,7 +28,6 @@ dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 }
-
 
 task runProducer(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
