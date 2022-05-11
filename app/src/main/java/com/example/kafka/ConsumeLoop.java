@@ -22,6 +22,15 @@ public abstract class ConsumeLoop<K, V extends SpecificRecord> implements Runnab
         this.consumer = consumer;
         this.topics = topics;
         this.shutdownLatch = new CountDownLatch(1);
+
+        // register shutdown hook
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            try {
+                this.shutdown();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }));
     }
 
     public abstract void process(ConsumerRecord<K, V> record);

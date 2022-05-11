@@ -33,15 +33,6 @@ public class ConsumerApp {
             }
         };
 
-        // register shutdown hook
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            try {
-                loop.shutdown();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }));
-
         new Thread(loop).start();
     }
 }
